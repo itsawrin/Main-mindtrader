@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تست تعیین سطح - MindTrader</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .question { margin-bottom: 20px; }
+        .result { display: none; margin-top: 30px; font-weight: bold; }
+        .lang-btn { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+        <h1>❓ تست تعیین سطح ترید</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. آیا تا حالا از صرافی برای خرید و فروش ارز دیجیتال استفاده کردی؟</p>
+                <label><input type="radio" name="q1" value="beginner"> نه، اصلاً</label><br>
+                <label><input type="radio" name="q1" value="intermediate"> خیلی کم</label><br>
+                <label><input type="radio" name="q1" value="advanced"> بله، زیاد</label>
+            </div>
+            <div class="question">
+                <p>2. با مفاهیمی مثل کندل، حمایت/مقاومت آشنایی داری؟</p>
+                <label><input type="radio" name="q2" value="beginner"> نه، فقط شنیدم</label><br>
+                <label><input type="radio" name="q2" value="intermediate"> آره، یه کم بلدم</label><br>
+                <label><input type="radio" name="q2" value="advanced"> کاملاً مسلطم</label>
+            </div>
+            <div class="question">
+                <p>3. تا حالا از استراتژی مشخصی برای ترید استفاده کردی؟</p>
+                <label><input type="radio" name="q3" value="beginner"> نه، همیشه شانسی می‌زنم</label><br>
+                <label><input type="radio" name="q3" value="intermediate"> بعضی وقتا</label><br>
+                <label><input type="radio" name="q3" value="advanced"> بله، استراتژی دارم و تستش کردم</label>
+            </div>
+            <button type="button" class="lang-btn" onclick="calculateLevel()">مشاهده سطح من</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateLevel() {
+            let form = document.forms["quiz-form"];
+            let advancedCount = 0;
+
+            for (let i = 1; i <= 3; i++) {
+                let answer = form["q" + i].value;
+                if (answer === "advanced") advancedCount++;
+            }
+
+            let resultText = "";
+            let level = "";
+
+            if (advancedCount === 3) {
+                resultText = "سطح شما: 🔴 پیشرفته";
+                level = "advanced.html";
+            } else if (advancedCount === 2) {
+                resultText = "سطح شما: 🟡 متوسط";
+                level = "intermediate.html";
+            } else {
+                resultText = "سطح شما: ✅ مبتدی";
+                level = "beginner.html";
+            }
+
+            document.getElementById("result").innerText = resultText;
+            document.getElementById("result").style.display = "block";
+
+            setTimeout(() => {
+                window.location.href = level;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

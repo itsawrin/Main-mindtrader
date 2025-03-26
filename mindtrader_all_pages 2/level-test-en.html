@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skill Level Test - MindTrader</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .question { margin-bottom: 20px; }
+        .result { display: none; margin-top: 30px; font-weight: bold; }
+        .lang-btn { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+        <h1>❓ Skill Level Test</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. Have you ever used a crypto exchange to buy or sell?</p>
+                <label><input type="radio" name="q1" value="beginner"> No, never</label><br>
+                <label><input type="radio" name="q1" value="intermediate"> Just a little</label><br>
+                <label><input type="radio" name="q1" value="advanced"> Yes, frequently</label>
+            </div>
+            <div class="question">
+                <p>2. Are you familiar with concepts like candles, support/resistance?</p>
+                <label><input type="radio" name="q2" value="beginner"> Just heard of them</label><br>
+                <label><input type="radio" name="q2" value="intermediate"> Somewhat familiar</label><br>
+                <label><input type="radio" name="q2" value="advanced"> Very confident</label>
+            </div>
+            <div class="question">
+                <p>3. Have you ever followed a trading strategy?</p>
+                <label><input type="radio" name="q3" value="beginner"> No, I just trade randomly</label><br>
+                <label><input type="radio" name="q3" value="intermediate"> Sometimes</label><br>
+                <label><input type="radio" name="q3" value="advanced"> Yes, with testing and tracking</label>
+            </div>
+            <button type="button" class="lang-btn" onclick="calculateLevel()">See My Level</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateLevel() {
+            let form = document.forms["quiz-form"];
+            let advancedCount = 0;
+
+            for (let i = 1; i <= 3; i++) {
+                let answer = form["q" + i].value;
+                if (answer === "advanced") advancedCount++;
+            }
+
+            let resultText = "";
+            let level = "";
+
+            if (advancedCount === 3) {
+                resultText = "Your level: 🔴 Advanced";
+                level = "advanced-en.html";
+            } else if (advancedCount === 2) {
+                resultText = "Your level: 🟡 Intermediate";
+                level = "intermediate-en.html";
+            } else {
+                resultText = "Your level: ✅ Beginner";
+                level = "beginner-en.html";
+            }
+
+            document.getElementById("result").innerText = resultText;
+            document.getElementById("result").style.display = "block";
+
+            setTimeout(() => {
+                window.location.href = level;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

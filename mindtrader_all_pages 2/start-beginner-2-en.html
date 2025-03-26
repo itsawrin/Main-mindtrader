@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hashing & Blockchain Security</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            line-height: 2;
+            max-width: 750px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .next-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 12px 24px;
+            background-color: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            width: fit-content;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hashing & Blockchain Security</h1>
+
+    <h2>What is a Hash?</h2>
+    <p>
+        A hash is a unique code generated from the content of each block. It's like a fingerprint for that block—no two blocks can have the same hash.
+        Even changing one tiny bit of the block will create a completely different hash.
+        This makes it nearly impossible to change information in a block without being noticed.
+    </p>
+
+    <h2>Why is Blockchain Secure?</h2>
+    <p>
+        Each block stores its own hash and also the hash of the previous block. This links all the blocks together in a chain.
+        If someone tries to change the data in one block, they must also change the hash of that block and all the blocks after it,
+        which would require enormous computing power and is almost impossible to do.
+    </p>
+
+    <a class="next-btn" href="start-beginner-3-en.html">Next Page</a>
+</body>
+</html>
